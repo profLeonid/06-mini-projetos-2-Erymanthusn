@@ -44,7 +44,8 @@ function criarListaMultiplo(quantidade){
 
 function criarListaPotencia(quantidade){
     let listaPotencia = []
-    let potencia =2
+    let potencia =1
+    
     for(let i = 1; i<=quantidade; i++){
         listaPotencia.push(potencia)
         potencia *=2
@@ -53,12 +54,36 @@ function criarListaPotencia(quantidade){
 
 }
 
-function criarLinha (criarListaNumeros, criarListaPares, criarListaImpares, criarListaMultiplo, criarListaPotencia){
-    
+function gerarTabela (){
+    const quantidade = Number(document.getElementById('qtde').value)
+    const corpoTabela = document.getElementById('tabela')
+
+    corpoTabela.innerHTML = ''
+
+    const listas = [
+        criarListaNumeros(quantidade),
+        criarListaPares(quantidade),
+        criarListaImpares(quantidade),
+        criarListaMultiplo(quantidade),
+        criarListaPotencia(quantidade)
+    ]
+
+    if(quantidade == '' || quantidade == "0"){
+        alert('O campo de quantidade não foi preenchido corretamente!')
+    } else{
+
+    for(let i = 0; i<=quantidade; i++){
+       const tr = document.createElement('tr')
+
+       listas.forEach(lista => {
+            const td = document.createElement('td')
+            td.textContent = lista[i]
+            tr.appendChild(td)
+       })
+
+       corpoTabela.appendChild(tr)
+    }
+}
 }
 
-console.log(criarListaNumeros(12))
-console.log(criarListaPares(12))
-console.log(criarListaImpares(12))
-console.log(criarListaMultiplo(12))
-console.log(criarListaPotencia(12))
+document.getElementById('gerar').addEventListener('click', gerarTabela)
