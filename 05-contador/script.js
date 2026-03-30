@@ -58,7 +58,7 @@ function gerarTabela (){
     const quantidade = Number(document.getElementById('qtde').value)
     const corpoTabela = document.getElementById('tabela')
 
-    corpoTabela.innerHTML = ''
+    corpoTabela.textContent = ''
 
     const listas = [
         criarListaNumeros(quantidade),
