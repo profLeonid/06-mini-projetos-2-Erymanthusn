@@ -44,7 +44,7 @@ function gerarTabela() {
     const numero = Number(document.getElementById('qtde').value)
     const corpoTabela = document.getElementById('tabela')
   
-    corpoTabela.innerHTML = ''
+    corpoTabela.textContent = ''
   
     if (!numero) {
       alert('Digite um número válido!')
